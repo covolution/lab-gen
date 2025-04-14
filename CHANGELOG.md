@@ -1,6 +1,12 @@
 # CHANGELOG
 
 
+## v0.4.0 (2025-04-14)
+
+### Features
+
+* feat: ET-1634: Add conference talk prompt template ([`e71adee`](https://dev.azure.com/DvlaEmergingTech/lab-gen/_git/lab-gen-api/commit/e71adeef84c35ee3d68f3d61d04cda1bd21ab1fb))
+
 ## v0.3.0 (2025-03-25)
 
 ### Features
