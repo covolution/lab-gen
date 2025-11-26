@@ -172,7 +172,6 @@ def init_vertex_llm(model: Model) -> ChatVertexAI:
         "credentials": credentials,
         "model_name": model.identifier,
         "project": model.config["project_id"],
-        "max_output_tokens": MAX_TOKENS,
         "streaming": True,
         "safety_settings": VERTEX_SAFETY_CONFIG,
         "convert_system_message_to_human": True,
