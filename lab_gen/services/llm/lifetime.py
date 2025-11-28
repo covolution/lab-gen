@@ -114,9 +114,7 @@ def init_azure_llm(model: Model) -> BaseChatModel:
     config = AzureModelConfig(**model.config)
     return AzureChatOpenAI(
         verbose=True,
-        temperature=0,
         azure_deployment=model.identifier,
-        max_tokens=MAX_TOKENS,
         api_version=config.api_version,
         azure_endpoint=config.endpoint,
         api_key=config.api_key,
