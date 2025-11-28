@@ -1,6 +1,16 @@
 # CHANGELOG
 
 
+## v0.6.0 (2025-11-28)
+
+### Bug Fixes
+
+* fix: ET-1648: Fix Gemini models by removing max_tokens ([`af686ee`](https://dev.azure.com/DvlaEmergingTech/lab-gen/_git/lab-gen-api/commit/af686eecab55a4d51d83c9b013ff92811f8491c3))
+
+### Features
+
+* feat: ET-1709: Add support for new Azure OpenAI models ([`6b2142e`](https://dev.azure.com/DvlaEmergingTech/lab-gen/_git/lab-gen-api/commit/6b2142e6bc29592474570aab72386ac365fa540e))
+
 ## v0.5.0 (2025-11-17)
 
 ### Bug Fixes
