@@ -1,3 +1,4 @@
+
 from typing import Any
 
 import boto3
@@ -11,7 +12,7 @@ from langchain_community.llms.azureml_endpoint import AzureMLEndpointApiType
 from langchain_core.language_models import BaseChatModel, BaseLanguageModel
 from langchain_google_vertexai import ChatVertexAI, HarmBlockThreshold, HarmCategory
 from langchain_mistralai.chat_models import ChatMistralAI
-from langchain_openai import AzureChatOpenAI
+from langchain_openai import AzureChatOpenAI, ChatOpenAI
 from loguru import logger
 
 from lab_gen.datatypes.errors import ModelKeyError
@@ -179,7 +180,25 @@ def init_vertex_llm(model: Model) -> ChatVertexAI:
     return ChatVertexAI(**vertex_setup)
 
 
-def init_models() -> None:
+def init_github_llm(model: Model, github_token: str) -> AzureChatOpenAI:
+    """
+    Initializes and returns a ChatOpenAI instance for GitHub Models.
+
+    Args:
+        model (Model): The model configuration.
+        github_token (str): The GitHub token for github models access.
+
+    Returns:
+        ChatOpenAI: The initialized GitHub Models LLM.
+    """
+    return ChatOpenAI(
+        model=model.identifier,
+        base_url=model.config["endpoint"],
+        api_key=github_token,
+        streaming=True,
+    )
+
+def init_models() -> None: # noqa: C901
     """
     Loops through the model settings, for each model configures an LLM client.
 
@@ -211,6 +230,12 @@ def init_models() -> None:
                     llm = HuggingFaceEndpoint(
                         streaming=True,
                         repo_id=config.repo_id, huggingfacehub_api_token=config.access_token)
+                case ModelProvider.GITHUB:
+                    # Check for GitHub Token for use in Codespaces
+                    github_token = settings.github_token
+
+                    if github_token is not None:
+                        llm = init_github_llm(model, github_token)
             if llm is not None:
                 logger.debug(f"Configuring LLM for {key} {model.identifier}")
                 model_providers[key] = llm

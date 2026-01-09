@@ -1,4 +1,4 @@
-# DVLA Emerging Tech Lab Generative AI
+# DVLA Emerging Tech Lab Generative AI Experiments
 
 ## Getting Started
 
@@ -24,6 +24,10 @@ echo 'LAB_GEN_SESSION_STORE_KEY=0177PWaDjWhceFttEK4Q=='  >> .env
 Setup your models config:
 
  `cp -r example_secrets secrets`.
+
+ or if using codespaces with Github Models:
+
+ `cp -r example_github_secrets secrets`
 
  Edit the `AZURE_MODELS` file in `./secrets`.
 
@@ -103,6 +107,17 @@ The model configuration is a json list and can be specified in any of the follow
 2. `AZURE_MODELS` can be specified as an enviroment variable on a single line (see example above).
 3. A `secrets` folder can be used to set values.  For example, rename the `example_secrets` folder to just `secrets` and the `AZURE_MODELS` file will be used for the model configuration.
 
+### Github CodeSpaces/Models
+The project will run out of the box in Codespaces with Github Models by following the quick start instructions. Model availability will depend on your Github subscription and certain premium models may not be available.
+
+Further detail on model availabilty and rate limits can be found in the [Github Models documentation](https://docs.github.com/en/github-models/use-github-models/prototyping-with-ai-models#rate-limits).
+
+To use Github models in other environments, you will need to [create a Personal Access Token (PAT) with the `models:read` permission](https://github.com/settings/personal-access-tokens) in your GitHub account. You can then set this token in your `.env` file as follows:
+
+```bash
+GITHUB_TOKEN="your_personal_access_token_here"
+```
+
 ### AWS Guardrails
 
 AWS Guardrails can be configured on the Bedrock models by adding the 'guardrailId' and 'guardrailversion' to the config.
@@ -157,7 +172,7 @@ LANGFUSE_HOST="langfuse host url" # available from langfuse cloud Settings
 ## License
 The MIT License (MIT)
 
-Copyright (c) 2024 DVLA
+Copyright (c) 2026 DVLA
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
