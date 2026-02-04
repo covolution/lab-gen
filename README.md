@@ -1,5 +1,8 @@
 # DVLA Emerging Tech Lab Generative AI Experiments
 
+> [!WARNING]
+> **This project is no longer maintained.**
+
 ## Getting Started
 
 ## Prerequisites
